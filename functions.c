@@ -205,27 +205,33 @@ void listagemMedicos(MED *medico, int *num_med, pconsulta first, DOE *doente, in
 }
 
 void listagemEspecialidade(MED *medico, int *num_med, pconsulta first, DOE *doente, int *num_doe) {
-    int i = 0;
+    int i = 0,j = 0;
     char esp [TAM_NOME];
-
 
     system("cls");
 
-    printf(" Qual a Especialidade?:\n\n");
-    scanf(" %[^\n]s", esp);
-    for (i = 0; i < *num_med; i++) {
-        if (comparaString(esp, medico[i].esp) == 0)
-            printf(" %s \n %s %d.%d - %d.%d \n", medico[i].nome, medico[i].esp,
-                medico[i].horario.horasEntrada, medico[i].horario.minutosEntrada,
-                medico[i].horario.horasSaida, medico[i].horario.minutosSaida);
-    }
+    do {
+        printf("Especialidade:\n\n");
+        scanf(" %[^\n]s", esp);
+
+        for (i = 0; i < *num_med; i++) {
+
+            if (comparaString(esp, medico[i].esp) == 0) {
+                j = 0;
+                break;
+            }
+            j = 1;
+        }
+        if (j == 1)
+            printf("Especialidade nao existe \n");
+    } while (j == 1);
+
+    printf(" %s \n %s %d.%d - %d.%d \n", medico[i].nome, medico[i].esp,medico[i].horario.horasEntrada, medico[i].horario.minutosEntrada,medico[i].horario.horasSaida, medico[i].horario.minutosSaida);
+
     printf("\nOK para continuar ....\n");
     fflush(stdin);
     getchar();
     menuMedicos(first, doente, num_doe, medico, num_med);
-
-
-
 }
 //   listagemHorario();
 
