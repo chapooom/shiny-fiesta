@@ -241,7 +241,7 @@ void listaConsultasMedico(MED *medico, int *num_med, pconsulta first, DOE *doent
     system("cls");
 
     for (i = 0; i < *num_med; i++) {
-        if (medico[i].consultaMedico == NULL) {
+        if (medico[i].consultaMedico != NULL) {
             printf(" %s - %s \n", medico[i].nome, medico[i].esp);
             while (medico[i].consultaMedico != NULL) {
                 printf(" %s - %s \n ", medico[i].consultaMedico->tipoConsulta, medico[i].consultaMedico->paciente);
@@ -255,6 +255,7 @@ void listaConsultasMedico(MED *medico, int *num_med, pconsulta first, DOE *doent
     }
 
     printf("\nOK para continuar ....\n");
+    fflush(stdin);
     getchar();
     menuMedicos(first, doente, num_doe, medico, num_med);
 
