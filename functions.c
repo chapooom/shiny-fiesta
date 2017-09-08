@@ -332,14 +332,16 @@ void listPacientesData(DOE* doente, int*num_doe, MED *medico, int *num_med, pcon
 
 void listagemConsultas(pconsulta first, DOE *doente, int *num_doe, MED *medico, int *num_med) {
 
-    if (first == NULL)
+    pconsulta aux;
+    aux = first;
+    if (aux == NULL)
         printf("---> Lista de consultas vazia <---\n\n");
 
-    while (first != NULL) {
-        printf(" %s \n %s - %d/%d/%d - %s - %s\n %d.%d - %d.%d\n\n", first->paciente, first->tipoConsulta,
-                first->data.dia, first->data.mes, first->data.ano, first->medico, first->especialidade,
-                first->horasConsulta.horasEntrada, first->horasConsulta.minutosEntrada, first->horasConsulta.horasSaida, first->horasConsulta.minutosSaida);
-        first = first->prox;
+    while (aux != NULL) {
+        printf(" %s \n %s - %d/%d/%d - %s - %s\n %d.%d - %d.%d\n\n", aux->paciente, aux->tipoConsulta,
+                aux->data.dia, aux->data.mes, aux->data.ano, aux->medico, aux->especialidade,
+                aux->horasConsulta.horasEntrada, aux->horasConsulta.minutosEntrada, aux->horasConsulta.horasSaida, aux->horasConsulta.minutosSaida);
+        aux = aux->prox;
     }
     printf("\nOK para continuar ....\n");
     fflush(stdin);
